@@ -11,13 +11,12 @@ class DQN:
 
         self.build_network()
 
-    def build_network(self, h_size = 10, l_rate = 1e-1):
+    def build_network(self, h_size=10, l_rate=1e-1):
          with tf.variable_scope(self.net_name):
             self.X = tf.placeholder(
                 tf.float32, [None, self.input_size], name='input_x')
 
-
-            W1 = tf.get_variable('w1', shape=[self.input_size, h_size],
+            W1 = tf.get_variable('W1', shape=[self.input_size, h_size],
                                 initializer=tf.contrib.layers.xavier_initializer())
 
             layer1 = tf.nn.tanh(tf.matmul(self.X, W1))
